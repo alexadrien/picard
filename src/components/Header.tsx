@@ -14,7 +14,7 @@ const Header: FC = () => {
           alignItems: "center",
         })}
       >
-        <Typography variant={"h1"}>PicAAArd</Typography>
+        <Typography variant={"h1"}>Picaaard</Typography>
         <Typography variant={"subtitle1"}>Powered by A³</Typography>
       </Box>
     </LineBox>
