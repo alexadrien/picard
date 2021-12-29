@@ -17,6 +17,7 @@ const NumberTextField: FC<IProps> = ({ label, value, onChange }) => {
     if (!numberValue) return;
 
     onChange(numberValue);
+    // @ts-ignore
   }, [numberValue]);
 
   return (
