@@ -21,17 +21,10 @@ const InstructionList: FC = () => {
 
   const endDate = getEndTime(startTime, firstFoodToCook);
 
-  const flipInstructions = generateFlipInstructions(foodList, endDate);
-  const foodStartInstructions = generateFoodStartInstructions(
-    foodList,
-    endDate
-  );
-  const endInstruction = generateEndInstruction(endDate);
-
   const instructions: Array<string> = [
-    ...flipInstructions,
-    ...foodStartInstructions,
-    endInstruction,
+    ...generateFlipInstructions(foodList, endDate),
+    ...generateFoodStartInstructions(foodList, endDate),
+    generateEndInstruction(endDate),
   ].sort();
 
   return (
