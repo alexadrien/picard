@@ -26,12 +26,9 @@ export const generateFlipInstructions = (
   foodList: FoodList,
   endDate: Date
 ): Array<Instruction> =>
-  foodList
-    .map(getInstructionsForThatFood(endDate))
-    .reduce(
-      (previousValue, currentValue) => [...previousValue, ...currentValue],
-      []
-    );
+  new Array<Instruction>().concat(
+    ...foodList.map(getInstructionsForThatFood(endDate))
+  );
 
 export const generateFoodStartInstructions = (
   foodList: FoodList,
