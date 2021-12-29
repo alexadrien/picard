@@ -12,6 +12,7 @@ import {
   generateFoodStartInstructions,
 } from "../utils/instructions";
 import InstructionLine from "./InstructionLine";
+import { Instruction } from "../types";
 
 const InstructionList: FC = () => {
   const startTime = useRecoilValue(startTimeAtom);
@@ -22,7 +23,7 @@ const InstructionList: FC = () => {
 
   const endDate = getEndTime(startTime, firstFoodToCook);
 
-  const instructions: Array<string> = [
+  const instructions: Array<Instruction> = [
     ...generateFlipInstructions(foodList, endDate),
     ...generateFoodStartInstructions(foodList, endDate),
     generateEndInstruction(endDate),
@@ -36,10 +37,7 @@ const InstructionList: FC = () => {
       <Paper>
         <List>
           {instructions.map((value, index) => (
-            <InstructionLine
-              key={index}
-              instruction={{ name: value, date: "12:34" }}
-            />
+            <InstructionLine key={index} instruction={value} />
           ))}
         </List>
       </Paper>
