@@ -33,6 +33,6 @@ export const generateFoodStartInstructions = (
   }));
 
 export const generateEndInstruction = (endDate: string): Instruction => ({
-  name: `Sortir tout et à table 😋`,
+  name: `Sortir tout et go à table 😋`,
   date: endDate,
 });
