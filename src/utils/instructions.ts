@@ -1,26 +1,33 @@
-import { FoodList, Instruction } from "../types";
+import { Food, FoodList, Instruction } from "../types";
 import { formatTime, getStartTimeForFood } from "./time";
 import { addMinutes } from "date-fns";
+
+const getInstruction =
+  (food: Food, endDate: Date) =>
+  (flipDuration: number): Instruction => ({
+    name: `Retourner les ${food.name}`,
+    date: formatTime(
+      addMinutes(getStartTimeForFood(endDate, food), flipDuration)
+    ),
+  });
+
+const getFlipDuration =
+  (food: Food) =>
+  (arrayNullValue: null, index: number): number =>
+    (index + 1) * (food.duration / (food.nbOfFlip + 1));
+
+const getInstructionsForThatFood = (endDate: Date) => (food: Food) =>
+  new Array(food.nbOfFlip)
+    .fill(null)
+    .map(getFlipDuration(food))
+    .map(getInstruction(food, endDate));
 
 export const generateFlipInstructions = (
   foodList: FoodList,
   endDate: Date
 ): Array<Instruction> =>
   foodList
-    .map((value) =>
-      new Array(value.nbOfFlip)
-        .fill(null)
-        .map(
-          (value1, index) =>
-            (index + 1) * (value.duration / (value.nbOfFlip + 1))
-        )
-        .map((value1) => ({
-          name: `Retourner les ${value.name}`,
-          date: formatTime(
-            addMinutes(getStartTimeForFood(endDate, value), value1)
-          ),
-        }))
-    )
+    .map(getInstructionsForThatFood(endDate))
     .reduce(
       (previousValue, currentValue) => [...previousValue, ...currentValue],
       []
