@@ -1,5 +1,5 @@
 # Picaaard web app
 
-[picaaard.netlify.app](https://picaaard.netlify.app/)
+[https://picard.fromaaawith.love/](https://picard.fromaaawith.love/)
 
 An app to time your meal perfectly. Just for fun.
