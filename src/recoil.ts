@@ -11,7 +11,7 @@ export const foodListAtom = atom<FoodList>({
   key: "foodList",
   default: [
     {
-      name: "Cordon bleu",
+      name: "Cordons bleus",
       duration: 45,
       nbOfFlip: 1,
     },
@@ -19,11 +19,6 @@ export const foodListAtom = atom<FoodList>({
       name: "Patates",
       duration: 35,
       nbOfFlip: 0,
-    },
-    {
-      name: "Lalala",
-      duration: 12,
-      nbOfFlip: 3,
     },
   ],
 });
