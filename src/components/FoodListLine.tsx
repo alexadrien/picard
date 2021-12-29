@@ -8,6 +8,7 @@ import { useRecoilState } from "recoil";
 import { foodListAtom } from "../recoil";
 import DeleteIcon from "@mui/icons-material/Delete";
 import NumberTextField from "./NumberTextField";
+import { updateFoodList } from "../utils/food";
 
 type IProps = {
   index: number;
@@ -26,26 +27,22 @@ const FoodListLine: FC<IProps> = ({ index }) => {
     ]);
 
   const onChange = (index: number) => (e: ChangeEvent<HTMLInputElement>) =>
-    setFoodList([
-      ...foodList.slice(0, index),
-      {
+    setFoodList(
+      updateFoodList(foodList, index, {
         ...foodList[index],
         name: e.target.value,
-      },
-      ...foodList.slice(index + 1, foodList.length),
-    ]);
+      })
+    );
 
   const onNumberChange =
     (index: number, key: "duration" | "nbOfFlip") =>
     (e: ChangeEvent<HTMLInputElement>) =>
-      setFoodList([
-        ...foodList.slice(0, index),
-        {
+      setFoodList(
+        updateFoodList(foodList, index, {
           ...foodList[index],
           [key]: parseInt(`${e.target.value}`),
-        },
-        ...foodList.slice(index + 1, foodList.length),
-      ]);
+        })
+      );
 
   return (
     <ColumnBox>

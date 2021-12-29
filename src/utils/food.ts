@@ -5,3 +5,13 @@ export const getLongestFoodToCook = (foodList: FoodList): Food | null => {
 
   return foodList.slice().sort((a, b) => b.duration - a.duration)[0];
 };
+
+export const updateFoodList = (
+  foodList: FoodList,
+  index: number,
+  food: Food
+): FoodList => [
+  ...foodList.slice(0, index),
+  food,
+  ...foodList.slice(index + 1, foodList.length),
+];
