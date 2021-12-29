@@ -1,12 +1,12 @@
 import React, { FC } from "react";
 import { Box, ListItem, Typography } from "@mui/material";
+import { Instruction } from "../types";
 
 type IProps = {
-  date: string;
-  name: string;
+  instruction: Instruction;
 };
 
-const InstructionLine: FC<IProps> = ({ date, name }) => {
+const InstructionLine: FC<IProps> = ({ instruction }) => {
   return (
     <ListItem>
       <Box
@@ -18,9 +18,9 @@ const InstructionLine: FC<IProps> = ({ date, name }) => {
           alignItems: "baseline",
         })}
       >
-        <Typography variant={"button"}>{date}</Typography>
+        <Typography variant={"button"}>{instruction.date}</Typography>
       </Box>
-      <Typography variant={"body2"}>{name}</Typography>
+      <Typography variant={"body2"}>{instruction.name}</Typography>
     </ListItem>
   );
 };

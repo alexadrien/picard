@@ -5,3 +5,8 @@ export type Food = {
 };
 
 export type FoodList = Array<Food>;
+
+export type Instruction = {
+  date: string;
+  name: string;
+};

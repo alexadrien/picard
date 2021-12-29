@@ -36,7 +36,10 @@ const InstructionList: FC = () => {
       <Paper>
         <List>
           {instructions.map((value, index) => (
-            <InstructionLine key={index} name={value} date={"12:34"} />
+            <InstructionLine
+              key={index}
+              instruction={{ name: value, date: "12:34" }}
+            />
           ))}
         </List>
       </Paper>
