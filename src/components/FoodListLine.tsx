@@ -25,17 +25,15 @@ const FoodListLine: FC<IProps> = ({ index }) => {
       ...foodList.slice(index + 1, foodList.length),
     ]);
 
-  const onChange =
-    (index: number, key: "name" | "duration" | "nbOfFlip") =>
-    (e: ChangeEvent<HTMLInputElement>) =>
-      setFoodList([
-        ...foodList.slice(0, index),
-        {
-          ...foodList[index],
-          [key]: e.target.value,
-        },
-        ...foodList.slice(index + 1, foodList.length),
-      ]);
+  const onChange = (index: number) => (e: ChangeEvent<HTMLInputElement>) =>
+    setFoodList([
+      ...foodList.slice(0, index),
+      {
+        ...foodList[index],
+        name: e.target.value,
+      },
+      ...foodList.slice(index + 1, foodList.length),
+    ]);
 
   const onNumberChange =
     (index: number, key: "duration" | "nbOfFlip") =>
@@ -55,7 +53,7 @@ const FoodListLine: FC<IProps> = ({ index }) => {
         <TextTextField
           label={"Nom"}
           value={food.name}
-          onChange={onChange(index, "name")}
+          onChange={onChange(index)}
         />
         <IconButton onClick={onDelete(index)}>
           <DeleteIcon />
