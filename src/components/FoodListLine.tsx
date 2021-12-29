@@ -35,12 +35,11 @@ const FoodListLine: FC<IProps> = ({ index }) => {
     );
 
   const onNumberChange =
-    (index: number, key: "duration" | "nbOfFlip") =>
-    (e: ChangeEvent<HTMLInputElement>) =>
+    (index: number, key: "duration" | "nbOfFlip") => (value: number) =>
       setFoodList(
         updateFoodList(foodList, index, {
           ...foodList[index],
-          [key]: parseInt(`${e.target.value}`),
+          [key]: parseInt(`${value}`) || 0,
         })
       );
 
