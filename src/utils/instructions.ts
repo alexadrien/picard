@@ -22,3 +22,12 @@ export const generateFlipInstructions = (foodList: FoodList, endDate: string) =>
       (previousValue, currentValue) => [...previousValue, ...currentValue],
       []
     );
+
+export const generateFoodStartInstructions = (
+  foodList: FoodList,
+  endDate: string
+) =>
+  foodList.map(
+    (value) =>
+      `${getStartTimeForFood(endDate, value)} : Enfourner les ${value.name}`
+  );

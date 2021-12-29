@@ -3,10 +3,13 @@ import { Box, List, ListItem, Typography } from "@mui/material";
 import { useRecoilValue } from "recoil";
 import { foodListAtom, startTimeAtom } from "../recoil";
 import { getLongestFoodToCook } from "../utils/food";
-import { getEndTime, getStartTimeForFood } from "../utils/time";
+import { getEndTime } from "../utils/time";
 import Paper from "./Paper";
 import LineBox from "./LineBox";
-import { generateFlipInstructions } from "../utils/instructions";
+import {
+  generateFlipInstructions,
+  generateFoodStartInstructions,
+} from "../utils/instructions";
 
 const InstructionList: FC = () => {
   const startTime = useRecoilValue(startTimeAtom);
@@ -18,13 +21,14 @@ const InstructionList: FC = () => {
   const endDate = getEndTime(startTime, firstFoodToCook);
 
   const flipInstructions = generateFlipInstructions(foodList, endDate);
+  const foodStartInstructions = generateFoodStartInstructions(
+    foodList,
+    endDate
+  );
 
   const instructions: Array<string> = [
     ...flipInstructions,
-    ...foodList.map(
-      (value) =>
-        `${getStartTimeForFood(endDate, value)} : Enfourner les ${value.name}`
-    ),
+    ...foodStartInstructions,
     `${endDate} : Sortir tout et à table 😋`,
   ].sort();
 
