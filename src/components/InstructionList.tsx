@@ -17,7 +17,7 @@ const InstructionList: FC = () => {
   const firstFoodToCook = getLongestFoodToCook(foodList);
   if (!firstFoodToCook) return <></>;
 
-  const endDate = getEndTime(startTime, firstFoodToCook);
+  const endDate: Date = getEndTime(startTime, firstFoodToCook);
 
   const instructions: Array<Instruction> = generateInstructions(
     endDate,
