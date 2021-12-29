@@ -20,6 +20,9 @@ const HourSelector: FC = () => {
         }}
         onChange={onChange}
         value={startTime}
+        sx={{
+          width: "60%",
+        }}
       />
     </LineBox>
   );
