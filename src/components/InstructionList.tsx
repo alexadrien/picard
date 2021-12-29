@@ -7,6 +7,7 @@ import { getEndTime } from "../utils/time";
 import Paper from "./Paper";
 import LineBox from "./LineBox";
 import {
+  generateEndInstruction,
   generateFlipInstructions,
   generateFoodStartInstructions,
 } from "../utils/instructions";
@@ -25,11 +26,12 @@ const InstructionList: FC = () => {
     foodList,
     endDate
   );
+  const endInstruction = generateEndInstruction(endDate);
 
   const instructions: Array<string> = [
     ...flipInstructions,
     ...foodStartInstructions,
-    `${endDate} : Sortir tout et à table 😋`,
+    endInstruction,
   ].sort();
 
   return (

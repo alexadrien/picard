@@ -31,3 +31,6 @@ export const generateFoodStartInstructions = (
     (value) =>
       `${getStartTimeForFood(endDate, value)} : Enfourner les ${value.name}`
   );
+
+export const generateEndInstruction = (endDate: string) =>
+  `${endDate} : Sortir tout et à table 😋`;
