@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Box, List, ListItem, Typography } from "@mui/material";
+import { Box, List, Typography } from "@mui/material";
 import { useRecoilValue } from "recoil";
 import { foodListAtom, startTimeAtom } from "../recoil";
 import { getLongestFoodToCook } from "../utils/food";
@@ -11,6 +11,7 @@ import {
   generateFlipInstructions,
   generateFoodStartInstructions,
 } from "../utils/instructions";
+import InstructionLine from "./InstructionLine";
 
 const InstructionList: FC = () => {
   const startTime = useRecoilValue(startTimeAtom);
@@ -35,9 +36,7 @@ const InstructionList: FC = () => {
       <Paper>
         <List>
           {instructions.map((value, index) => (
-            <ListItem key={index}>
-              <Typography variant={"body1"}>{value}</Typography>
-            </ListItem>
+            <InstructionLine key={index} name={value} date={"12:34"} />
           ))}
         </List>
       </Paper>
