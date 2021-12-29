@@ -27,5 +27,8 @@ export const theme = createTheme({
     h2: {
       fontSize: "2rem",
     },
+    subtitle2: {
+      fontStyle: "italic",
+    },
   },
 });

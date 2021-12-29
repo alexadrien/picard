@@ -16,6 +16,7 @@ const Header: FC = () => {
       >
         <Typography variant={"h1"}>Picaaard</Typography>
         <Typography variant={"subtitle1"}>Powered by A³</Typography>
+        <Typography variant={"subtitle2"}>Time it perfectly</Typography>
       </Box>
     </LineBox>
   );
