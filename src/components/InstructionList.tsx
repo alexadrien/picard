@@ -27,7 +27,7 @@ const InstructionList: FC = () => {
     ...generateFlipInstructions(foodList, endDate),
     ...generateFoodStartInstructions(foodList, endDate),
     generateEndInstruction(endDate),
-  ].sort();
+  ].sort((a, b) => (a.date < b.date ? -1 : 1));
 
   return (
     <Box>

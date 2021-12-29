@@ -14,11 +14,11 @@ export const getTimeFormatter = () =>
 
 export const getCurrentTime = () => new Date();
 
-export const getEndTime = (startTime: string, longerToCookFood: Food): string =>
-  formatTime(addMinutes(parseTime(startTime), longerToCookFood.duration));
+export const getEndTime = (startTime: string, longerToCookFood: Food): Date =>
+  addMinutes(parseTime(startTime), longerToCookFood.duration);
 
-export const getStartTimeForFood = (endTime: string, food: Food): string =>
-  formatTime(addMinutes(parseTime(endTime), -1 * food.duration));
+export const getStartTimeForFood = (endTime: Date, food: Food): Date =>
+  addMinutes(endTime, -1 * food.duration);
 
 export const parseTime = (time: string) => parse(time, "HH:mm", new Date());
 
