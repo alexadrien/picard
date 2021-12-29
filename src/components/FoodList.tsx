@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FC } from "react";
-import { IconButton, TextField } from "@mui/material";
+import { IconButton } from "@mui/material";
 import { useRecoilState } from "recoil";
 import { foodListAtom } from "../recoil";
 import NewFoodButton from "./NewFoodButton";
@@ -8,6 +8,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import JustifiedBox from "./JustifiedBox";
 import Paper from "./Paper";
 import NumberTextField from "./NumberTextField";
+import TextTextField from "./TextTextField";
 
 const FoodList: FC = () => {
   const [foodList, setFoodList] = useRecoilState(foodListAtom);
@@ -48,12 +49,10 @@ const FoodList: FC = () => {
         {foodList.map((value, index) => (
           <ColumnBox key={index}>
             <JustifiedBox>
-              <TextField
-                variant={"standard"}
+              <TextTextField
                 label={"Nom"}
                 value={value.name}
                 onChange={onChange(index, "name")}
-                sx={{ width: "100%" }}
               />
               <IconButton onClick={onDelete(index)}>
                 <DeleteIcon />
