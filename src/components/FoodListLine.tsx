@@ -10,12 +10,14 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import NumberTextField from "./NumberTextField";
 
 type IProps = {
-  food: Food;
   index: number;
 };
 
-const FoodListLine: FC<IProps> = ({ food, index }) => {
+const FoodListLine: FC<IProps> = ({ index }) => {
   const [foodList, setFoodList] = useRecoilState(foodListAtom);
+  if (foodList.length === 0) return <></>;
+
+  const food: Food = foodList[index];
 
   const onDelete = (index: number) => () =>
     setFoodList([

@@ -13,7 +13,7 @@ const FoodList: FC = () => {
     <Paper>
       <ColumnBox>
         {foodList.map((value, index) => (
-          <FoodListLine key={index} index={index} food={value} />
+          <FoodListLine key={index} index={index} />
         ))}
         <NewFoodButton />
       </ColumnBox>
