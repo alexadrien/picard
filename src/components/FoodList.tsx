@@ -7,6 +7,7 @@ import ColumnBox from "./ColumnBox";
 import DeleteIcon from "@mui/icons-material/Delete";
 import JustifiedBox from "./JustifiedBox";
 import Paper from "./Paper";
+import NumberTextField from "./NumberTextField";
 
 const FoodList: FC = () => {
   const [foodList, setFoodList] = useRecoilState(foodListAtom);
@@ -59,18 +60,14 @@ const FoodList: FC = () => {
               </IconButton>
             </JustifiedBox>
             <JustifiedBox>
-              <TextField
-                variant={"standard"}
+              <NumberTextField
                 label={"Temps de cuisson"}
                 value={value.duration}
-                type={"number"}
                 onChange={onNumberChange(index, "duration")}
               />
-              <TextField
-                variant={"standard"}
+              <NumberTextField
                 label={"Je dois remuer # fois"}
                 value={value.nbOfFlip}
-                type={"number"}
                 onChange={onNumberChange(index, "nbOfFlip")}
               />
             </JustifiedBox>
