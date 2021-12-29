@@ -6,11 +6,7 @@ import { getLongestFoodToCook } from "../utils/food";
 import { getEndTime } from "../utils/time";
 import Paper from "./Paper";
 import LineBox from "./LineBox";
-import {
-  generateEndInstruction,
-  generateFlipInstructions,
-  generateFoodStartInstructions,
-} from "../utils/instructions";
+import { generateInstructions } from "../utils/instructions";
 import InstructionLine from "./InstructionLine";
 import { Instruction } from "../types";
 
@@ -23,11 +19,10 @@ const InstructionList: FC = () => {
 
   const endDate = getEndTime(startTime, firstFoodToCook);
 
-  const instructions: Array<Instruction> = [
-    ...generateFlipInstructions(foodList, endDate),
-    ...generateFoodStartInstructions(foodList, endDate),
-    generateEndInstruction(endDate),
-  ].sort((a, b) => (a.date < b.date ? -1 : 1));
+  const instructions: Array<Instruction> = generateInstructions(
+    endDate,
+    foodList
+  );
 
   return (
     <Box>

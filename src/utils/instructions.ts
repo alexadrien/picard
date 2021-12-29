@@ -39,3 +39,13 @@ export const generateEndInstruction = (endDate: Date): Instruction => ({
   name: `Sortir tout et go à table 😋`,
   date: formatTime(endDate),
 });
+
+export const generateInstructions = (
+  endDate: Date,
+  foodList: FoodList
+): Array<Instruction> =>
+  [
+    ...generateFlipInstructions(foodList, endDate),
+    ...generateFoodStartInstructions(foodList, endDate),
+    generateEndInstruction(endDate),
+  ].sort((a, b) => (a.date < b.date ? -1 : 1));
